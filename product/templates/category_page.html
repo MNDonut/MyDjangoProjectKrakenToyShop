@@ -1,0 +1,11 @@
+{% extends 'common/navbar.html' %}
+
+{% load static %}
+
+{% block title %}{{ category.title }} - KrakenToy{% endblock %}
+
+{% block content %}
+{% for item in items %}
+{{ item }}
+{% endfor %}
+{% endblock %}

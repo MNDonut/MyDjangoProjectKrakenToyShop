@@ -1,0 +1,114 @@
+h1 {
+    padding: 5% 0 0 0;
+    text-align: center;
+    color: black;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+.item-img {
+    grid-area: image;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+
+.category {
+    color: #6666f5;
+    font-size: 16px;
+}
+
+.category:hover {
+    color: crimson;
+}
+
+.category_list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+    margin: 5% 0 0 10%;
+}
+
+.category_block {
+    border-right: 0.5px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+/* div is sticked when it's wrapped because of wrapper is an area for moving */
+.sticky_category_block {
+    position: sticky;
+    top: 0;
+    padding: 0 0 4%;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.item {
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: "image image"
+                         "title title"
+                         "price cart"
+                         "in_stock in_stock";
+    border-right: 0.5px solid #dbdbdb;
+    border-bottom: 0.5px solid #dbdbdb;
+    color: black;
+}
+
+.cart i {
+    color: #00a046;
+}
+
+.cart {
+    text-align: right;
+    padding: 0 10% 0 0;
+}
+
+.title {
+    grid-area: title;
+    text-align: left;
+    color: black;
+    font-size: 20px;
+    border-top: 1px solid #dbdbdb;
+    padding: 0 0 0 2%;
+}
+
+.title:hover {
+    text-decoration: underline;
+}
+
+.price {
+    grid-area: price;
+    text-align: left;
+    padding: 4% 0 4% 4%;
+    font-size: 24px;
+    color: crimson;
+}
+
+.cart {
+    grid-area: cart;
+}
+
+.in_stock {
+    grid-area: in_stock;
+    text-align: left;
+    padding: 0 0 0 2%;
+}
+
+.in_stock_true {
+    color: #00a046;
+}
+
+.in_stock_false {
+    color: gray;
+}

@@ -1,0 +1,41 @@
+{% extends 'common/navbar.html' %}
+
+{% block title %}Kraken's catalog{% endblock %}
+
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'catalog.css' %}">
+<div class="wrapper">
+    <div class="category_block">
+        <div class="sticky_category_block">
+            <h1>Categories</h1>
+            <ul class="category_list">
+                {% for category in categories %}
+                    <a class='category' href="{% url 'byCategory' category.slug %}">{{ category }}</a>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        {% for item in items %}
+            <div class="item">
+                <a class="item-img" href="{% url 'byName' item.slug%}"><img src="{{ item.image.url }}" alt="No image"></a>
+                <a href="{% url 'byName' item.slug %}" class="title">{{ item.title }}</a>
+                <span class="price">{{ item.price }}₴</span>
+                {% if item.in_stock %}
+                    <a class="cart" href="#"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                {% endif %}
+                <span class="in_stock">
+                    {% if item.in_stock %}
+                        <span class="in_stock_true">In stock</span>
+                    {% else %}
+                        <span class="in_stock_false">Not in stock</span>
+                    {% endif %}
+                </span>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

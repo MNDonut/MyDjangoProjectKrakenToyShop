@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'forms.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <title>Register</title>
+</head>
+<body>
+    <form method="post">
+        <h1>Register</h1>
+        {% csrf_token %}
+        <br>
+        {% for field in form %}
+            <p>{{ field }}</p>
+            <br>
+            {% for error in field.errors %}
+            <p class="error">{{ error }}</p>
+            <br>
+            {% endfor %}
+        {% endfor %}
+        <div class="form_footer">
+            <p>Have an account? <a href="{% url 'login' %}">Log in</a></p>
+            <button type="submit">Register</button>
+        </div>
+    </form>
+</body>
+</html>
