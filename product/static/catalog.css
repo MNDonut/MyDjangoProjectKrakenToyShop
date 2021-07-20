@@ -67,11 +67,19 @@ img {
 
 .cart i {
     color: #00a046;
+    grid-area: cart;
 }
 
 .cart {
     text-align: right;
     padding: 0 10% 0 0;
+    grid-area: cart;
+}
+
+.disabled_cart {
+    text-align: right;
+    padding: 0 10% 0 0;
+    color: gray;
 }
 
 .title {
@@ -93,10 +101,6 @@ img {
     padding: 4% 0 4% 4%;
     font-size: 24px;
     color: crimson;
-}
-
-.cart {
-    grid-area: cart;
 }
 
 .in_stock {

@@ -25,6 +25,8 @@
                 <span class="price">{{ item.price }}₴</span>
                 {% if item.in_stock %}
                     <a class="cart" href="#"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                {% else %}
+                    <i class="fas fa-shopping-cart fa-2x disabled_cart"></i>
                 {% endif %}
                 <span class="in_stock">
                     {% if item.in_stock %}
