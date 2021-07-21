@@ -16,6 +16,9 @@ class ItemFilter(FilterSet):
         label='Order',
     )
 
+    price_gte = django_filters.NumberFilter(field_name='price', label='Price from: ', lookup_expr='gte')
+    price_lte = django_filters.NumberFilter(field_name='price', label='Price to: ', lookup_expr='lte')
+
     color = django_filters.ModelMultipleChoiceFilter(queryset=Color.objects.all(), 
                                                      widget=forms.CheckboxSelectMultiple())
     material = django_filters.ModelMultipleChoiceFilter(queryset=Material.objects.all(), 
@@ -24,8 +27,7 @@ class ItemFilter(FilterSet):
                                                    widget=forms.CheckboxSelectMultiple())
     country = django_filters.ModelMultipleChoiceFilter(queryset=Country.objects.all(), 
                                                       widget=forms.CheckboxSelectMultiple())
-    # in_stock = django_filters.BooleanFilter(widget=forms.CheckboxInput())
-
+                                                      
     class Meta:
         model = Item
-        fields = ["price", "color", "material", "age", "country", "in_stock"]
+        fields = ["price_gte", "price_lte" , "price", "color", "material", "age", "country", "in_stock"]
