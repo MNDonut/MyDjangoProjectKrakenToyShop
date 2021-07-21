@@ -22,6 +22,8 @@ img {
 
 .title_block {
     border-bottom: 1px solid #dbdbdb;
+    align-items: center;
+    display: grid;
 }
 
 .category {
@@ -54,6 +56,10 @@ img {
     padding: 0 0 4%;
     overflow-y: scroll;
     max-height: 98vh;
+}
+
+.sticky_category_block h1 {
+    padding-top: 20px;
 }
 
 .main {
