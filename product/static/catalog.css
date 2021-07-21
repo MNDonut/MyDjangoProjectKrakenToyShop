@@ -1,5 +1,4 @@
 h1 {
-    padding: 5% 0 0 0;
     text-align: center;
     color: black;
 }
@@ -15,44 +14,16 @@ img {
 
 .wrapper {
     display: grid;
-    grid-template-areas: "category_block sort"
+    grid-template-areas: "category_block count_items"
                          "category_block main";
     grid-template-columns: 1fr 3fr;
     grid-template-rows: 1fr 10fr;
 }
 
-.sort_block {
-    grid-area: sort;
+.title_block {
     border-bottom: 1px solid #dbdbdb;
-}
-
-.sort_block {
     align-items: center;
     display: grid;
-    justify-content: flex-end;
-}
-
-.sort_block * {
-    color: black;
-}
-
-.sort_block select {
-    outline: none;
-    padding: 10px;
-    font-size: 17px;
-}
-
-.sort_block button {
-    padding: 10px 25px;
-    background: #00a046;
-    border: 0;
-    color: white;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.sort_block form {
-    margin: 0 15px 0 0;
 }
 
 .category {
@@ -69,6 +40,8 @@ img {
     flex-direction: column;
     row-gap: 10px;
     margin: 5% 0 0 10%;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid #dbdbdb;
 }
 
 .category_block {
@@ -81,6 +54,8 @@ img {
     position: sticky;
     top: 0;
     padding: 0 0 4%;
+    overflow-y: scroll;
+    max-height: 98vh;
 }
 
 .main {
@@ -154,4 +129,45 @@ img {
 
 .in_stock_false {
     color: gray;
+}
+
+.category_block form * {
+    color: black;
+}
+
+.main_filter li {
+    padding-left: 20px;
+}
+
+.main_filter button {
+    text-align: center;
+}
+
+.filter_title {
+    font-size: 20px;
+    color: white;
+}
+
+.filter_section {
+    border-top: 1px solid #dbdbdb;
+    padding: 5px 0;
+    align-items: center;
+}
+
+.filter_section select {
+    padding: 5px 15px;
+    margin: 0 5px;
+}
+
+.filter_button_div {
+    text-align: center;
+}
+
+.filter_button {
+    padding: 5px 20px;
+    font-size: 20px;
+    border: 0;
+    border-top: 1px solid #dbdbdb;
+    background: #00a046;
+    cursor: pointer;
 }

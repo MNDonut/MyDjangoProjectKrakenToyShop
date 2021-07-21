@@ -7,15 +7,12 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'catalog.css' %}">
 <div class="wrapper">
-    <!-- display field in a row and add button -->
-    <div class="sort_block">
-        <form method="get">
-            {% csrf_token %}
-            {% for field in filter.form %}
-                {{ field }}
-            {% endfor %}
-            <button type="submit">sort</button>
-        </form>
+    <div class="title_block">
+        {% if filter_main.qs.exists %}
+            <h1>Catalog</h1>
+        {% else %}
+            <h1>There aren't any matches</h1>
+        {% endif %}
     </div>
     <div class="category_block">
         <div class="sticky_category_block">
@@ -24,11 +21,23 @@
                 {% for category in categories %}
                     <a class='category' href="{% url 'byCategory' category.slug %}">{{ category }}</a>
                 {% endfor %}
+                <form class="main_filter" method="get">
+                    {% csrf_token %}
+                    {% for field in filter_main.form %}
+                        <div class="filter_section">
+                            <span class="filter_title">{{ field.label }}</span>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <div class="filter_button_div">
+                        <button style="color: white" class="filter_button" type="submit">Filter</button>
+                    </div>
+                </form>
             </ul>
         </div>
     </div>
     <div class="main">
-        {% for item in filter.qs %}
+        {% for item in filter_main.qs %}
             <div class="item">
                 <a class="item-img" href="{% url 'byName' item.slug%}"><img src="{{ item.image.url }}" alt="No image"></a>
                 <a href="{% url 'byName' item.slug %}" class="title">{{ item.title }}</a>

@@ -1,7 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    color: white;
     font-family: 'Rubik', sans-serif;
 }
 
@@ -34,6 +33,7 @@ ul a {
 }
 
 .menu {
+    color: white;
     display: grid;
     grid-template-columns: 1fr 2fr;
     align-items: center;
@@ -48,5 +48,6 @@ ul a {
 }
 
 .menu_list_item {
+    color: white;
     margin: 0 3%;
 }
