@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from .models import Item, Category
+from .filters import OrderFilter
 
 def list(request):
+    filter = OrderFilter(request.GET, queryset=Item.objects.all())
     items = Item.objects.all()
     categories = Category.objects.all()
     context = {
         'categories': categories,
-        'items': items
+        'items': items,
+        'filter': filter
     }
     return render(request, 'catalog.html' , context)
 
