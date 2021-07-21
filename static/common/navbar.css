@@ -4,6 +4,18 @@
     font-family: 'Rubik', sans-serif;
 }
 
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dbdbdb;
+}
+  
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(146, 149, 151);
+}
+
 a {
     text-decoration: none;
 }
