@@ -16,14 +16,14 @@ def list(request):
 def byName(request, slug):
     item = Item.objects.get(slug=slug)
     context = {
-        'items': item
+        'item': item
     }
     return render(request, 'item_page.html' , context)
 
 def byCategory(request, slug):
     filtered = Item.objects.filter(category__slug=slug)
     context = {
-        'items': filtered,
+        'item': filtered,
         'category': slug
     }
     return render(request, 'category_page.html' , context)

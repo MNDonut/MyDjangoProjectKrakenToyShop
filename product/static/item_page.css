@@ -1,0 +1,78 @@
+h1 {
+    border-left: 3px solid black;
+    padding: 0 0 0 10px;
+    margin: 2%;
+    font-size: 3em;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+    position: sticky;
+    top: 0;
+}
+
+h2 {
+    align-self: center;
+    display: grid;
+    font-size: 20px;
+    border-bottom: 2px solid #c0c0c0;;
+}
+
+.wrapper {
+    border-top: 2px solid #dbdbdb;
+    column-gap: 10px;
+    height: max-content;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+}
+
+.purchase_wrapper {
+    height: max-content;
+    display: grid;
+    grid-template-rows: 1fr 2fr 2fr 2fr;
+}
+
+.purchase_items, .purchase_payment, .purchase_return, .purchase_guarantee {
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    display: grid;
+    margin: 10px 20px;
+    height: max-content;
+    padding: 10px;
+    grid-row-gap: 10px;
+    
+}
+
+.purchase_payment, .purchase_return, .purchase_guarantee {
+    grid-template-rows: 1fr 4fr;
+    line-height: 25px;
+}
+
+.purchase_items {
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr 1fr ;
+}
+
+.purchase_items_price {
+    color: crimson;
+    font-size:24px;
+    padding: 0 0 0 10px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 25px;
+    background: #00a046;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    border: 2px solid #00a046;
+    border-radius: 4px;
+}

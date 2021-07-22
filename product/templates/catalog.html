@@ -39,7 +39,7 @@
     <div class="main">
         {% for item in filter_main.qs %}
             <div class="item">
-                <a class="item-img" href="{% url 'byName' item.slug%}"><img src="{{ item.image.url }}" alt="No image"></a>
+                <a class="item-img" href="{% url 'byName' item.slug %}"><img src="{{ item.image.url }}" alt="No image"></a>
                 <a href="{% url 'byName' item.slug %}" class="title">{{ item.title }}</a>
                 <span class="price">{{ item.price }}₴</span>
                 {% if item.in_stock %}

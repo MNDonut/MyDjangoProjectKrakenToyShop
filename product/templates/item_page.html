@@ -2,8 +2,40 @@
 
 {% load static %}
 
-{% block title %}{{ item.title }}{% endblock %}
+{% block title %}{{ item.title }} - KrakenToy{% endblock %}
 
 {% block content %}
-{{ item }}
+<link rel="stylesheet" href="{% static 'item_page.css' %}">
+<h1>{{ item.title }}</h1>
+<div class="wrapper">
+    <div class="image_wrapper">
+        <img src="{{ item.image.url }}" alt="">
+    </div>
+    <div class="purchase_wrapper">
+        <div class="purchase_items">
+            <span class="purchase_items_price">{{ item.price }}₴</span>
+            <form method="get">
+                <span><i class="fas fa-balance-scale fa-2x"></i></span>
+                <span><i class="far fa-heart fa-2x"></i></span>
+                {% csrf_token %}
+                <p>filter</p>
+                <button type="submit">Buy</button>
+            </form>
+        </div>
+        <div class="purchase_payment">
+            <h2>Payment</h2>
+            <span>Payment upon receipt of the goods, By card online, Google Pay, Promotional payment by Visa card, Cashless for legal entities, Cashless for individuals, PrivatPay, Apple Pay, Credit, Payment in installments.</span>
+        </div>
+        <div class="purchase_return">
+            <h2>Return</h2>
+            <span>The Law of Ukraine "On Consumer Protection" stipulates that within 14 days from the date of purchase a serviceable product, ie a product of proper quality, which for any reason did not like the buyer, can be returned.</span>
+        </div>
+        <div class="purchase_guarantee">
+            <h2>Guarantee</h2>
+            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum corrupti labore officia illo a perspiciatis, mollitia rem dignissimos? Ea, dolore.</span>
+        </div>
+    </div>
+    <div class="description_wrapper">cdadsadadasdasdsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
+    <div class="characteristic_wrapper">d</div>
+</div>
 {% endblock %}
