@@ -14,13 +14,11 @@
     <div class="purchase_wrapper">
         <div class="purchase_items">
             <span class="purchase_items_price">{{ item.price }}₴</span>
-            <form method="get">
-                <span><i class="fas fa-balance-scale fa-2x"></i></span>
-                <span><i class="far fa-heart fa-2x"></i></span>
-                {% csrf_token %}
-                <p>filter</p>
-                <button type="submit">Buy</button>
-            </form>
+            <div class="purchase_items_icons">
+                <a href="#"><i class="fas fa-balance-scale fa-2x"></i></a>
+                <a href="#"><i class="far fa-heart fa-2x"></i></a>
+            </div>
+            <button type="submit">Buy</button>
         </div>
         <div class="purchase_payment">
             <h2>Payment</h2>
@@ -34,8 +32,56 @@
             <h2>Guarantee</h2>
             <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum corrupti labore officia illo a perspiciatis, mollitia rem dignissimos? Ea, dolore.</span>
         </div>
+        <div class="purchase_delivery">
+            <h2>Delivery</h2>
+            <span>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum corrupti labore officia illo a perspiciatis, mollitia rem dignissimos? Ea, dolore.</span>
+        </div>
     </div>
-    <div class="description_wrapper">cdadsadadasdasdsadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</div>
-    <div class="characteristic_wrapper">d</div>
+    <div class="description_wrapper">
+        <span>{{ item.description }}</span>
+    </div>
+    <div class="characteristic_wrapper">
+        <div class="characteristic_wrapper_sticky">
+            <h2>Characteristics</h2>
+            <div class="characteristics">
+                <br>
+                <div class="characteristics_item">
+                    <span class="characteristics_item_title">Color:</span>
+                    <span class="characteristics_item_value">
+                        {{ item.color }}
+                    </span>
+                </div>
+                <br>
+                <div class="characteristics_item">
+                    <span class="characteristics_item_title">Category:</span>
+                    <span class="characteristics_item_value">
+                        <a href="{% url 'byCategory' item.category.slug %}">{{ item.category }}</a>
+                    </span>
+                </div>
+                <br>
+                <div class="characteristics_item">
+                    <span class="characteristics_item_title">Age:</span>
+                    <span class="characteristics_item_value">
+                        {{ item.age }}
+                    </span>
+                </div>
+                <br>
+                <div class="characteristics_item">
+                    <span class="characteristics_item_title">Material:</span>
+                    <span class="characteristics_item_value">
+                        {{ item.material }}
+                    </span>
+                </div>
+                <br>
+                <div class="characteristics_item">
+                    <span class="characteristics_item_title">Country:</span>
+                    <span class="characteristics_item_value">
+                        {{ item.country }}
+                    </span>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
