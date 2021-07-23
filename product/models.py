@@ -18,6 +18,7 @@ class Item(models.Model):
     age = models.ForeignKey('Age', on_delete=CASCADE, default='')
     description = models.CharField(max_length=5000)
     in_stock = models.BooleanField(default=True)
+    guarantee = models.ForeignKey('Guarantee', on_delete=CASCADE, null=True)
     country = models.ForeignKey('Country', on_delete=CASCADE, default='')
     slug = AutoSlugField(populate_from='title')
 
@@ -64,3 +65,9 @@ class Material(models.Model):
 
     def __str__(self):
         return self.material
+
+class Guarantee(models.Model):
+    guarantee = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.guarantee
