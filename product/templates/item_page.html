@@ -15,8 +15,14 @@
         <div class="purchase_items">
             <span class="purchase_items_price">{{ item.price }}₴</span>
             <div class="purchase_items_icons">
-                <a href="#"><i class="fas fa-balance-scale fa-2x"></i></a>
-                <a href="#"><i class="far fa-heart fa-2x"></i></a>
+                {% if request.user.is_authenticated %}
+                    <a href="#"><i class="fas fa-balance-scale fa-2x"></i></a>
+                    {% if isFavorite %}
+                        <a href="{% url 'addFavorite' item.slug %}"><i class="fas fa-heart fa-2x"></i></a>
+                    {% else %}
+                        <a href="{% url 'addFavorite' item.slug %}"><i class="far fa-heart fa-2x"></i></a>
+                    {% endif %}
+                {% endif %}
             </div>
             <button type="submit">Buy</button>
         </div>

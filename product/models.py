@@ -71,3 +71,10 @@ class Guarantee(models.Model):
 
     def __str__(self):
         return self.guarantee
+
+class Favorite(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    item = models.ForeignKey('Item', on_delete=CASCADE)
+
+    def __str__(self):
+        return self.item
