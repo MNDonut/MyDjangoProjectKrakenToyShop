@@ -1,0 +1,53 @@
+img {
+    width: 300px;
+    height: 300px;
+
+    justify-self: center;
+}
+
+.item_img {
+    grid-area: img;
+}
+
+.trash {
+    grid-area: trash;
+    color: black;
+    background: crimson;
+    height: 100%;
+    align-items: center;
+    font-size: 2em;
+}
+
+.list {
+    margin: 2%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 1fr;
+}
+
+.item {
+    display: grid;
+    grid-template-areas: "img img"
+                       "title price"
+                       "trash trash";
+    align-items: center;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+}
+
+.item_title {
+    color: #00a046;
+    font-size: 2em;
+    grid-area: title;
+}
+
+.item_price {
+    grid-area: price;
+    color: crimson;
+    font-size: 2em;
+}
+
+.total {
+    text-align: center;
+    font-size: 2em;
+}

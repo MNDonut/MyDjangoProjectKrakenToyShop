@@ -77,4 +77,4 @@ class Favorite(models.Model):
     item = models.ForeignKey('Item', on_delete=CASCADE)
 
     def __str__(self):
-        return self.item
+        return str(self.item)

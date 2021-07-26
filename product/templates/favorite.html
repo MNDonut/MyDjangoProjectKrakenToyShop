@@ -1,0 +1,22 @@
+{% extends 'common/navbar.html' %}
+
+{% load static %}
+
+{% block title %}Favorite items - KrakenToy{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'favorite.css' %}">
+<div class="wrapper">
+    <div class="list">
+        {% for favorite in items %}
+            <div class="item">
+                <a class="item_img" href="{% url 'byName' favorite.item.slug %}"><img src="{{ favorite.item.image.url }}" alt="No image"></a>
+                <a href="{% url 'byName' favorite.item.slug %}" class="item_title">{{ favorite.item.title }}</a>
+                <span class="item_price">{{ favorite.item.price }}₴</span>
+                <a class="trash" href="{% url 'removeFavorite' favorite.item.slug %}"><i class="far fa-trash-alt"></i></a>
+            </div>
+        {% endfor %}
+    </div>
+    <p class='total'>Total: {{ totalPrice }}₴</p> 
+</div>
+{% endblock %}

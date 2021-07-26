@@ -1,4 +1,4 @@
-from django.http.response import HttpResponseRedirect
+from django.http.response import HttpResponse, HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import Favorite, Item, Category
 from .filters import ItemFilter
@@ -44,3 +44,19 @@ def addFavorite(request, slug):
     favorite = Favorite.objects.create(user=request.user, item=item)
     favorite.save()
     return redirect(f"/products/product/{slug}")   
+
+def removeFavorite(request, slug):
+    item = Item.objects.get(slug=slug)
+    favorite = Favorite.objects.get(item=item, user=request.user)
+    favorite.delete()
+    return redirect(f"/products/favorite")  
+
+def favorite(request):
+    favoriteItems = Favorite.objects.filter(user=request.user)
+    total = sum([favorite.item.price for favorite in favoriteItems])
+    context = {
+        'items': favoriteItems,
+        'totalPrice': total
+    }
+    return render(request, 'favorite.html', context)
+
