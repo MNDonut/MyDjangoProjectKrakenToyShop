@@ -1,0 +1,38 @@
+{% extends 'common/navbar.html' %}
+
+{% load static %}
+
+{% block title %}Comparison{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'comparison.css' %}">
+<div class="wrapper">
+    <ul class="list">
+        {% for compareItem in items %}
+        <li class="item">
+            <img src="{{ compareItem.item.image.url }}" alt="">
+            <span class="item_title">{{ compareItem.item.title }}</span>
+            {% if compareItem.item.in_stock %}
+                <span class="item_in_stock">In stock</span>
+            {% else %}
+                <span style="color: gray" class="item_not_in_stock">Not in stock</span>
+            {% endif %}
+        </li>       
+        {% endfor %}
+    </ul>
+    <ul class="characteristics">
+        {% for compareItem in items %}
+        <li>
+            <p class="characteristic">{{ compareItem.item.price }}₴</p>
+            <p class="characteristic">{{ compareItem.item.color }}</p>
+            <p class="characteristic">{{ compareItem.item.category }}</p>
+            <p class="characteristic">{{ compareItem.item.material }}</p>
+            <p class="characteristic">{{ compareItem.item.age }}</p>
+            <p class="characteristic">{{ compareItem.item.country }}</p>
+            <p class="characteristic">{{ compareItem.item.guarantee }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
+<!-- button for adding to compare and delete button on compare page -->

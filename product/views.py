@@ -1,6 +1,6 @@
-from django.http.response import HttpResponse, HttpResponseRedirect
+from django.forms.models import model_to_dict
 from django.shortcuts import redirect, render
-from .models import Favorite, Item, Category
+from .models import Favorite, Item, Category, CompareItem
 from .filters import ItemFilter
 
 def list(request):
@@ -21,9 +21,11 @@ def byName(request, slug):
     }
     if request.user.is_authenticated:
         isFavorite = Favorite.objects.filter(user=request.user, item=item)
+        isCompared = CompareItem.objects.filter(user=request.user, item=item)
         context = {
             'item': item,
-            'isFavorite': isFavorite
+            'isFavorite': isFavorite,
+            'isCompared': isCompared
         }
     return render(request, 'item_page.html' , context)
 
@@ -60,3 +62,19 @@ def favorite(request):
     }
     return render(request, 'favorite.html', context)
 
+def comparison(request):
+    items = CompareItem.objects.filter(user=request.user)[:5]
+    context = {
+        'items': items
+    }
+    return render(request, 'comparison.html', context)
+
+def addToCompare(request, slug):
+    item = Item.objects.get(slug=slug)
+    isCompared = CompareItem.objects.filter(user=request.user, item=item)
+    if isCompared:
+        isCompared.delete()
+        return redirect(f"/products/product/{slug}") 
+    compared = CompareItem.objects.create(user=request.user, item=item)
+    compared.save()
+    return redirect(f"/products/product/{slug}")

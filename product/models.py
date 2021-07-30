@@ -78,3 +78,10 @@ class Favorite(models.Model):
 
     def __str__(self):
         return str(self.item)
+
+class CompareItem(models.Model):
+    user = models.ForeignKey(User, on_delete=CASCADE)
+    item = models.ForeignKey('Item', on_delete=CASCADE)
+
+    def __str__(self):
+        return str(self.item)

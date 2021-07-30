@@ -20,7 +20,7 @@
             <a href="{% url 'catalog' %}" class="menu_list_item"><i class="fas fa-list fa-lg"></i></a>
             {% if request.user.is_authenticated %}
             <a href="{% url 'favorite' %}" class="menu_list_item"><i class="far fa-heart fa-lg"></i></a>
-            <a href="#" class="menu_list_item"><i class="fas fa-balance-scale fa-lg"></i></a>
+            <a href="{% url 'comparison' %}" class="menu_list_item"><i class="fas fa-balance-scale fa-lg"></i></a>
             <a href="{% url 'logout' %}" class="menu_list_item"><span>Logout</span></a>
             {% else %}
             <a href="{% url 'login' %}" class="menu_list_item">Login</a>

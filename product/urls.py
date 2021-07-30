@@ -8,4 +8,7 @@ urlpatterns = [
     path('product/<slug:slug>/', views.byName, name='byName'),
     path('product/addFavorite/<slug:slug>', views.addFavorite, name='addFavorite'),
     path('product/removeFavorite/<slug:slug>', views.removeFavorite, name='removeFavorite'),
+    path('comparison/', views.comparison, name='comparison'),
+    path('product/addToCompare/<slug:slug>', views.addToCompare, name='addToCompare'),
+
 ]

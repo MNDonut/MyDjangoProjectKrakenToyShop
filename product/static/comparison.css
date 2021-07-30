@@ -1,0 +1,55 @@
+img {
+    justify-self: center;
+    width: auto;
+    height: 200px;
+    grid-area: img;
+}
+
+.wrapper {
+    padding: 2%;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.item {
+    overflow: hidden;
+    border: 1px solid #dbdbdb;
+    text-align: center;
+    display: grid;
+    grid-template-areas: "img img"
+                       "title title"
+                    "in_stock in_stock"
+             "characteristics characteristics";
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+}
+
+.item_title {
+    font-size: 1.5em;
+    grid-area: title;
+}
+
+.item_in_stock {
+    color: #00a046;
+    grid-area: in_stock;
+}
+
+.item_not_in_stock {
+    grid-area: in_stock;
+}
+
+.characteristics {
+    border: 1px solid #dbdbdb;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.characteristic {
+    padding: 4%;
+    font-size: 1.25em;
+    border: 1px solid #dbdbdb;
+}
