@@ -11,7 +11,7 @@ img {
 
 .list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-auto-flow: column;
 }
 
 .item {
@@ -28,7 +28,7 @@ img {
 }
 
 .item_title {
-    font-size: 1.5em;
+    font-size: 2em;
     grid-area: title;
 }
 
@@ -42,14 +42,14 @@ img {
 }
 
 .characteristics {
-    border: 1px solid #dbdbdb;
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-area: characteristics;
 }
 
 .characteristic {
-    padding: 4%;
+    padding: 1em;
     font-size: 1.25em;
-    border: 1px solid #dbdbdb;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
 }

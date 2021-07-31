@@ -11,16 +11,25 @@
         {% for compareItem in items %}
         <li class="item">
             <img src="{{ compareItem.item.image.url }}" alt="">
-            <span class="item_title">{{ compareItem.item.title }}</span>
+            <a class="item_title" href="{% url 'byName' compareItem.item.slug %}"><span>{{ compareItem.item.title }}</span></a>
             {% if compareItem.item.in_stock %}
                 <span class="item_in_stock">In stock</span>
             {% else %}
                 <span style="color: gray" class="item_not_in_stock">Not in stock</span>
             {% endif %}
+            <div class="characteristics">
+                <p class="characteristic">{{ compareItem.item.price }}₴</p>
+                <p class="characteristic">{{ compareItem.item.color }}</p>
+                <p class="characteristic">{{ compareItem.item.category }}</p>
+                <p class="characteristic">{{ compareItem.item.material }}</p>
+                <p class="characteristic">{{ compareItem.item.age }}</p>
+                <p class="characteristic">{{ compareItem.item.country }}</p>
+                <p class="characteristic">{{ compareItem.item.guarantee }}</p>
+            </div>
         </li>       
         {% endfor %}
     </ul>
-    <ul class="characteristics">
+    <!-- <ul class="characteristics">
         {% for compareItem in items %}
         <li>
             <p class="characteristic">{{ compareItem.item.price }}₴</p>
@@ -32,7 +41,7 @@
             <p class="characteristic">{{ compareItem.item.guarantee }}</p>
         </li>
         {% endfor %}
-    </ul>
+    </ul> -->
 </div>
 {% endblock %}
-<!-- button for adding to compare and delete button on compare page -->
+<!-- centralize all items(grid-columns: repeat(1, 5fr)) delete button on compare page -->
