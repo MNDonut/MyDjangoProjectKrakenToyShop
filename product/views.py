@@ -1,4 +1,5 @@
 from django.forms.models import model_to_dict
+from django.http.response import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .models import Favorite, Item, Category, CompareItem
 from .filters import ItemFilter
@@ -42,16 +43,16 @@ def addFavorite(request, slug):
     isFavorite = Favorite.objects.filter(user=request.user, item=item)
     if isFavorite:
         isFavorite.delete()
-        return redirect(f"/products/product/{slug}") 
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
     favorite = Favorite.objects.create(user=request.user, item=item)
     favorite.save()
-    return redirect(f"/products/product/{slug}")   
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
 
 def removeFavorite(request, slug):
     item = Item.objects.get(slug=slug)
     favorite = Favorite.objects.get(item=item, user=request.user)
     favorite.delete()
-    return redirect(f"/products/favorite")  
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER")) 
 
 def favorite(request):
     favoriteItems = Favorite.objects.filter(user=request.user)
@@ -63,9 +64,19 @@ def favorite(request):
     return render(request, 'favorite.html', context)
 
 def comparison(request):
-    items = CompareItem.objects.filter(user=request.user)[:5]
+    # zip two lists into one with pairs (item, isFavorite(bool)) to discover what heart to display)
+    items = CompareItem.objects.filter(user=request.user)[:6]
+    favoriteItems = Favorite.objects.filter(user=request.user)
+    isFavoriteList = []
+    for compareItem in items:
+        for favoriteItem in favoriteItems:
+            if compareItem.item == favoriteItem.item:
+                isFavoriteList.append(True)
+                break
+        else:
+            isFavoriteList.append(False)
     context = {
-        'items': items
+        'items': zip(items, isFavoriteList)
     }
     return render(request, 'comparison.html', context)
 
@@ -74,7 +85,13 @@ def addToCompare(request, slug):
     isCompared = CompareItem.objects.filter(user=request.user, item=item)
     if isCompared:
         isCompared.delete()
-        return redirect(f"/products/product/{slug}") 
+        return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
     compared = CompareItem.objects.create(user=request.user, item=item)
     compared.save()
-    return redirect(f"/products/product/{slug}")
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
+
+def removeCompareItem(request, slug):
+    item = Item.objects.get(slug=slug)
+    compareItem = CompareItem.objects.get(item=item, user=request.user)
+    compareItem.delete()
+    return HttpResponseRedirect(request.META.get("HTTP_REFERER")) 

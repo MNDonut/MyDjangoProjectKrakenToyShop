@@ -19,10 +19,11 @@ img {
     border: 1px solid #dbdbdb;
     text-align: center;
     display: grid;
-    grid-template-areas: "img img"
-                       "title title"
-                    "in_stock in_stock"
-             "characteristics characteristics";
+    grid-template-areas: "favorite remove"
+                              "img img"
+                            "title title"
+                         "in_stock in_stock"
+                  "characteristics characteristics";
     grid-template-columns: 1fr 1fr;
     align-items: center;
 }
@@ -51,5 +52,18 @@ img {
     padding: 1em;
     font-size: 1.25em;
     border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.heart {
+    grid-area: favorite;
+    color: crimson;
+    border-bottom: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+}
+
+.trash {
+    grid-area: remove;
+    color: crimson;
     border-bottom: 1px solid #dbdbdb;
 }
