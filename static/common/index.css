@@ -89,5 +89,10 @@ li a {
 }
 
 .not_in_stock {
+    font-size: 0.85em;
     color: gray;
+}
+
+.categories_header {
+    text-align: center;
 }
