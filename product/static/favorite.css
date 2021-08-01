@@ -1,50 +1,65 @@
 img {
-    width: 300px;
-    height: 300px;
+    width: 70%;
+    height: 200px;
+}
 
-    justify-self: center;
+a {
+    color: black;
+}
+
+.list {
+    padding: 2%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.item {
+    display: grid;
+    grid-template-areas:  "img img"
+                        "title title"
+                        "price trash"
+                     "in_stock trash";
+    grid-template-columns: repeat(2, 1fr);
+    border: 1px solid #dbdbdb;
+    text-align: center;
 }
 
 .item_img {
     grid-area: img;
 }
 
-.trash {
-    grid-area: trash;
-    color: black;
-    background: crimson;
-    height: 100%;
-    align-items: center;
-    font-size: 2em;
-}
-
-.list {
-    margin: 2%;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 1fr;
-}
-
-.item {
-    display: grid;
-    grid-template-areas: "img img"
-                       "title price"
-                       "trash trash";
-    align-items: center;
-    border: 1px solid #dbdbdb;
-    text-align: center;
-}
-
 .item_title {
-    color: #00a046;
-    font-size: 2em;
+    text-align: left;
     grid-area: title;
+    font-size: 1.5em;
+    border-top: 1px solid #dbdbdb;
 }
 
 .item_price {
+    text-align: left;
     grid-area: price;
     color: crimson;
-    font-size: 2em;
+    font-size: 1.5em;
+}
+
+.trash {
+    grid-area: trash;
+    text-align: center;
+    align-self: center;
+    color: crimson;
+}
+
+.item_in_stock {
+    grid-area: in_stock;
+    text-align: left;
+}
+
+.in_stock {
+    color: green;
+}
+
+.not_in_stock {
+    color: gray;
 }
 
 .total {

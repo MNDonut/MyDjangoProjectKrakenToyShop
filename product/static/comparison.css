@@ -31,6 +31,7 @@ img {
 .item_title {
     font-size: 2em;
     grid-area: title;
+    color: slateblue;
 }
 
 .item_in_stock {

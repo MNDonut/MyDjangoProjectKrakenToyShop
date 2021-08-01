@@ -65,7 +65,7 @@ def favorite(request):
 
 def comparison(request):
     # zip two lists into one with pairs (item, isFavorite(bool)) to discover what heart to display)
-    items = CompareItem.objects.filter(user=request.user)[:6]
+    items = CompareItem.objects.filter(user=request.user)[:5]
     favoriteItems = Favorite.objects.filter(user=request.user)
     isFavoriteList = []
     for compareItem in items:

@@ -13,7 +13,14 @@
                 <a class="item_img" href="{% url 'byName' favorite.item.slug %}"><img src="{{ favorite.item.image.url }}" alt="No image"></a>
                 <a href="{% url 'byName' favorite.item.slug %}" class="item_title">{{ favorite.item.title }}</a>
                 <span class="item_price">{{ favorite.item.price }}₴</span>
-                <a class="trash" href="{% url 'removeFavorite' favorite.item.slug %}"><i class="far fa-trash-alt"></i></a>
+                <span class="item_in_stock">
+                    {% if favorite.item.in_stock %}
+                        <span class="in_stock">In stock</span>
+                    {% else %}
+                        <span class="not_in_stock">Not in stock</span>
+                    {% endif %}
+                </span>
+                <a class="trash" href="{% url 'removeFavorite' favorite.item.slug %}"><i class="far fa-trash-alt fa-2x"></i></a>
             </div>
         {% endfor %}
     </div>
