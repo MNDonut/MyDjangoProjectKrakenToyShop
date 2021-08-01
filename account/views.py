@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
+from product.models import Category, Favorite, CompareItem, Item
 
 def register(request):
     if request.method == 'POST':
@@ -18,4 +19,14 @@ def register(request):
     return render(request, 'register.html', context)
 
 def home(request):
-    return render(request, 'common/navbar.html')
+    randomItems = Item.objects.all().order_by('?')[:5]
+    favoriteItems = Favorite.objects.all()[:5]
+    comparingItems = CompareItem.objects.all()[:5]
+    categories = Category.objects.all()
+    context = {
+        'random': randomItems,
+        'favorite': favoriteItems,
+        'comparing': comparingItems,
+        'categories': categories
+    }
+    return render(request, 'common/index.html', context)

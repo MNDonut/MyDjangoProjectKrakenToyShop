@@ -1,0 +1,93 @@
+h2 {
+    text-align: left;
+    font-size: 2em;
+    padding: 0.25em 0;
+    align-self: center;
+}
+
+img {
+    width: auto;
+    height: 150px;
+}
+
+li {
+    padding: 0.25em 0;
+}
+
+li a {
+    font-size: 1.25em;
+}
+
+.wrapper {
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
+.category_block, .main {
+    border: 1px solid #dbdbdb;
+}
+
+.container {
+    position: sticky;
+    top: 0;
+    padding: 0 0 0 10%;
+    border-bottom: 1px solid #dbdbdb;
+}
+
+.main {
+    display: grid;
+    grid-auto-flow: rows;
+}
+
+.random_block, .favorite_block, .comparison_block {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    display: grid;
+    grid-template-rows: 1fr 3fr;
+}
+
+.items_list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    border-top: 2px solid #dbdbdb;
+}
+
+.item {
+    text-align: center;
+    border-right: 1px solid #dbdbdb;
+    display: grid;
+    grid-template-areas: "img img"
+                         "title title"
+                         "price in_stock";
+}
+
+.item_img {
+    grid-area: img;
+}
+
+.item_title {
+    text-align: left;
+    grid-area: title;
+}
+
+.item_price {
+    font-size: 1.5em;
+    color: crimson;
+    text-align: left;
+    grid-area: price;
+}
+
+.item_in_stock {
+    font-size: 1.25em;
+    align-self: center;
+    grid-area: in_stock;
+}
+
+.in_stock {
+    color: #00a046;
+}
+
+.not_in_stock {
+    color: gray;
+}

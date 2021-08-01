@@ -5,12 +5,92 @@
 {% block title %}KrakenToy{% endblock %}
 
 {% block content %}
+<link rel="stylesheet" href="{% static 'common/index.css' %}">
 <div class="wrapper">
     <div class="category_block">
-        
+        <div class="container">
+            <h2>Categories</h2>
+            <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{% url 'byCategory' category.slug %}">
+                        <p>{{ category }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="main">
-
+        <div class="random_block">
+            <h2>May be interesting</h2>
+            <ul class="items_list">
+                {% for randomItem in random %}
+                    <li class="item">
+                        <a href="{% url 'byName' randomItem.slug %}" class="item_img">
+                            <img src="{{ randomItem.image.url }}" alt="">
+                        </a>
+                        <a href="{% url 'byName' randomItem.slug %}" class="item_title">
+                            <span>{{ randomItem.title }}</span>
+                        </a>
+                        <span class="item_price">{{ randomItem.price }}₴</span>
+                        <span class="item_in_stock">
+                            {% if randomItem.in_stock %}
+                                <span class="in_stock">In stock</span>
+                            {% else %}
+                                <span class="not_in_stock">Not in stock</span>
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="favorite_block">
+            <h2>Favorite items</h2>
+            <ul class="items_list">
+                {% for favoriteItem in favorite %}
+                    <li class="item">
+                        <a href="{% url 'byName' favoriteItem.item.slug %}" class="item_img">
+                            <img src="{{ favoriteItem.item.image.url }}" alt="">
+                        </a>
+                        <a href="{% url 'byName' favoriteItem.item.slug %}" class="item_title">
+                            <span>{{ favoriteItem.item.title }}</span>
+                        </a>
+                        <span class="item_price">{{ favoriteItem.item.price }}₴</span>
+                        <span class="item_in_stock">
+                            {% if favoriteItem.item.in_stock %}
+                                <span class="in_stock">In stock</span>
+                            {% else %}
+                                <span class="not_in_stock">Not in stock</span>
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="comparison_block">
+            <h2>Comparing items</h2>
+            <ul class="items_list">
+                {% for comparingItem in comparing %}
+                    <li class="item">
+                        <a href="{% url 'byName' comparingItem.item.slug %}" class="item_img">
+                            <img src="{{ comparingItem.item.image.url }}" alt="">
+                        </a>
+                        <a href="{% url 'byName' comparingItem.item.slug %}" class="item_title">
+                            <span>{{ comparingItem.item.title }}</span>
+                        </a>
+                        <span class="item_price">{{ comparingItem.item.price }}₴</span>
+                        <span class="item_in_stock">
+                            {% if comparingItem.item.in_stock %}
+                                <span class="in_stock">In stock</span>
+                            {% else %}
+                                <span class="not_in_stock">Not in stock</span>
+                            {% endif %}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </div>
 {% endblock %}
