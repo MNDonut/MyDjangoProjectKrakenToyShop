@@ -8,6 +8,10 @@ img {
     height: 200px;
 }
 
+input {
+    padding: 2%;
+}
+
 .item-img {
     grid-area: image;
 }
@@ -154,8 +158,9 @@ img {
 
 .filter_section {
     border-top: 1px solid #dbdbdb;
-    padding: 5px 0;
+    padding: 5% 0;
     align-items: center;
+
 }
 
 .filter_section select {

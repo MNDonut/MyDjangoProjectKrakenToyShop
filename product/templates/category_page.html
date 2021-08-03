@@ -5,7 +5,49 @@
 {% block title %}{{ category.title }} - KrakenToy{% endblock %}
 
 {% block content %}
-{% for item in items %}
-{{ item }}
-{% endfor %}
+<link rel="stylesheet" href="{% static 'category_page.css' %}">
+<div class="wrapper">
+    <div class="filter_block">
+        <div class="sticky_filter_block">
+            <h1>Filters</h1>
+            <ul class="filter_list">
+                <form class="main_filter" method="get">
+                    {% csrf_token %}
+                    {% for field in filter.form %}
+                        <div class="filter_section">
+                            <span class="filter_title">{{ field.label }}</span>
+                            {{ field }}
+                        </div>
+                    {% endfor %}
+                    <div class="filter_button_div">
+                        <button style="color: white" class="filter_button" type="submit">Filter</button>
+                    </div>
+                </form>
+            </ul>
+        </div>
+    </div>
+    <div class="main">
+        <ul class="items">
+            {% for item in filter.qs %}
+                <li class="item">
+                    <a class="item_image" href="{% url 'byName' item.slug %}"><img src="{{ item.image.url }}" alt=""></a>
+                    <a class="item_title" href="{% url 'byName' item.slug %}">{{ item.title }}</a>
+                    <span class="item_price">{{ item.price }}₴</span>
+                    {% if item.in_stock %}
+                        <a class="cart" href="#"><i style="color:#00a046" class="fas fa-shopping-cart fa-2x"></i></a>
+                    {% else %}
+                        <i style="color:gray" class="fas fa-shopping-cart fa-2x disabled_cart"></i>
+                    {% endif %}
+                    <span class="item_stock">
+                        {% if item.in_stock %}
+                            <span class="item_in_stock">In stock</span>
+                        {% else %}
+                            <span class="item_not_in_stock">Not in stock</span>
+                        {% endif %}
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock %}

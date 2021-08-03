@@ -31,10 +31,12 @@ def byName(request, slug):
     return render(request, 'item_page.html' , context)
 
 def byCategory(request, slug):
+    mainFilter = ItemFilter(request.GET, queryset=Item.objects.filter(category__slug=slug))
     filtered = Item.objects.filter(category__slug=slug)
     context = {
-        'item': filtered,
-        'category': slug
+        'items': filtered,
+        'category': slug,
+        'filter': mainFilter
     }
     return render(request, 'category_page.html' , context)
 

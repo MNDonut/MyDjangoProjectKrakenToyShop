@@ -18,6 +18,10 @@ li a {
     font-size: 1.25em;
 }
 
+li a:hover {
+    color: crimson;
+}
+
 .wrapper {
     height: fit-content;
     display: grid;

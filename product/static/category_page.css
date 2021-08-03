@@ -1,0 +1,118 @@
+h1 {
+    text-align: center;
+    padding: 4% 0;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+}
+
+button {
+    width: 25%;
+    text-align: center;
+    padding: 2% 4%;
+    border: 0;
+    background: #00a046;
+    color: white;
+    font-size: 1.25em;
+    cursor: pointer;
+}
+
+select, input {
+    padding: 1%;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 1000vh;
+}
+
+.filter_block {
+    border: 1px solid #dbdbdb;
+}
+
+.sticky_filter_block {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.filter_section {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 4% 5% 4% 5%;
+    align-items: center;
+}
+
+.filter_title {
+    font-size: 1.25em;
+}
+
+.filter_button_div {
+    text-align: center;
+}
+
+.filter_section li {
+    padding-left: 5%;
+}
+
+.items {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 1fr 1fr;
+}
+
+.item {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    border-right: 1px solid #dbdbdb;
+    align-items: center;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "img img"
+                         "title title"
+                         "price cart"
+                         "in_stock in_stock";
+}
+
+.item_image {
+    grid-area: img;
+}
+
+.item_title {
+    color: black;
+    justify-self: left;
+    padding-left: 2%;
+    grid-area: title;
+}
+
+.item_title:hover {
+    text-decoration: underline;
+}
+
+.item_price {
+    color: crimson;
+    font-size: 1.5em;
+    justify-self: left;
+    padding-left: 4%;
+    grid-area: price;
+}
+
+.item_stock {
+    font-size: 1.25em;
+    justify-self: left;
+    padding-left: 2%;
+    grid-area: in_stock;
+}
+
+.item_in_stock {
+    color: #00a046;
+}
+
+.item_not_in_stock {
+    color: gray;
+}
