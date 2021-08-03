@@ -18,7 +18,7 @@ li a {
     font-size: 1.25em;
 }
 
-li a:hover {
+.category_block li a:hover {
     color: crimson;
 }
 
@@ -71,8 +71,13 @@ li a:hover {
 }
 
 .item_title {
+    color: black;
     text-align: left;
     grid-area: title;
+}
+
+.item_title:hover {
+    text-decoration: underline;
 }
 
 .item_price {
