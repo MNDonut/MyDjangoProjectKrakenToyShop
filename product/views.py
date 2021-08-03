@@ -1,8 +1,8 @@
-from django.forms.models import model_to_dict
 from django.http.response import HttpResponseRedirect
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from .models import Favorite, Item, Category, CompareItem
 from .filters import ItemFilter
+from django.contrib.auth.decorators import login_required
 
 def list(request):
     mainFilter = ItemFilter(request.GET, queryset=Item.objects.all())
@@ -40,6 +40,7 @@ def byCategory(request, slug):
     }
     return render(request, 'category_page.html' , context)
 
+@login_required
 def addFavorite(request, slug):
     item = Item.objects.get(slug=slug)
     isFavorite = Favorite.objects.filter(user=request.user, item=item)
@@ -50,12 +51,14 @@ def addFavorite(request, slug):
     favorite.save()
     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
 
+@login_required
 def removeFavorite(request, slug):
     item = Item.objects.get(slug=slug)
     favorite = Favorite.objects.get(item=item, user=request.user)
     favorite.delete()
     return HttpResponseRedirect(request.META.get("HTTP_REFERER")) 
 
+@login_required
 def favorite(request):
     favoriteItems = Favorite.objects.filter(user=request.user)
     total = sum([favorite.item.price for favorite in favoriteItems])
@@ -65,6 +68,7 @@ def favorite(request):
     }
     return render(request, 'favorite.html', context)
 
+@login_required
 def comparison(request):
     # zip two lists into one with pairs (item, isFavorite(bool)) to discover what heart to display)
     items = CompareItem.objects.filter(user=request.user)[:5]
@@ -82,6 +86,7 @@ def comparison(request):
     }
     return render(request, 'comparison.html', context)
 
+@login_required
 def addToCompare(request, slug):
     item = Item.objects.get(slug=slug)
     isCompared = CompareItem.objects.filter(user=request.user, item=item)
@@ -92,6 +97,7 @@ def addToCompare(request, slug):
     compared.save()
     return HttpResponseRedirect(request.META.get("HTTP_REFERER"))  
 
+@login_required
 def removeCompareItem(request, slug):
     item = Item.objects.get(slug=slug)
     compareItem = CompareItem.objects.get(item=item, user=request.user)
